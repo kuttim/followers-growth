@@ -33,10 +33,11 @@ fig.add_trace(go.Bar(x=usernames, y=followers_now, name='2022',
 fig.update_layout(
     autotypenumbers='convert types',
     barmode='group',
+    xaxis={'categoryorder': 'total ascending'},
     title='Top 25 instagram accounts growth from 2016 to 2022',
     xaxis_title='Usernames',
     yaxis_title='Followers (in millions)',
     legend_title='Year',
     xaxis_tickangle=-50,
-    )
+)
 fig.show()
