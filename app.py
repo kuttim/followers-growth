@@ -49,5 +49,6 @@ app.layout = html.Div(children=[
         style={'width': '200vh', 'height': '100vh'}
     )
 ])
+server = app.server
 if __name__ == '__main__':
     app.run_server(debug=True)
