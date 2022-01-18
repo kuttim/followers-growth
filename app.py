@@ -46,7 +46,7 @@ app.layout = html.Div(children=[
     dcc.Graph(
         id='my-graph',
         figure=fig,
-        style={'width': '200vh', 'height': '100vh'}
+        style={'width': '170vh', 'height': '100vh'}
     )
 ])
 server = app.server
