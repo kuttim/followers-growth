@@ -1,12 +1,12 @@
 import plotly.graph_objects as go
-import pandas as pd
-import numpy as np
-import plotly.express as px
+from dash import Dash, html, dcc
 
 import csv
 
-# Map information from csv file to our figure.
+# Initialize dash app
+app = Dash(__name__)
 
+# Map information from csv file to our figure.
 usernames = []
 followers_old = []
 followers_now = []
@@ -24,6 +24,7 @@ with open('data/2022.csv', 'r') as f:
     for row in reader:
         followers_now.append(row[1])
 
+
 fig = go.Figure()
 fig.add_trace(go.Bar(x=usernames, y=followers_old, name='2016',
               marker_color='lightsalmon'))
@@ -40,4 +41,13 @@ fig.update_layout(
     legend_title='Year',
     xaxis_tickangle=-50,
 )
-fig.show()
+
+app.layout = html.Div(children=[
+    dcc.Graph(
+        id='my-graph',
+        figure=fig,
+        style={'width': '200vh', 'height': '100vh'}
+    )
+])
+if __name__ == '__main__':
+    app.run_server(debug=True)
